@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>button_demo</title>
+<script src="jquery.min.js"></script>
+
+<style type="text/css">
+  .button1{
+    width: 300px;
+    height: 80px;
+    margin: 100px auto 0 auto;
+    text-align: center;
+    /*background-color:#58E816;*/
+    overflow: hidden;
+  }
+  .button1 a{
+    display: block;
+
+    margin: 0 auto;
+    width: 200px;
+    height: 80px;  
+    font: lighter 2em/85px "Helvetica Neue", "Arial", "Helvetica", "sans-serif";
+    text-decoration: none;
+    /*background-color:#5EA5F1;*/
+
+    -webkit-transition: margin .5s ease-in-out;
+    -moz-transition: margin .5s ease-in-out;
+    -o-transition: margin .5s ease-in-out;
+    -ms-transition: margin .5s ease-in-out;
+    transition: margin .5s ease-in-out;
+
+  }
+  .button1 a:first-child{
+    color: #ffffff;
+    background-color:#7C32DE;
+  }
+  .button1 a:nth-of-type(2){
+    color: #ffffff;
+    background-color:#000000;
+  }
+  .button1  a{
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+
+    -webkit-box-shadow: 10px 10px 8px rgba(0,0,0,0.2);
+    -moz-box-shadow: 10px 10px 8px rgba(0,0,0,0.2);
+    box-shadow: 10px 10px 8px rgba(0,0,0,0.2);
+  }
+  .button1 a:hover:first-child{
+    margin-top: -80px;
+    /*margin: -80px auto;             */  
+  }
+
+  .button2{
+    width: 400px;
+    height: 80px;
+    margin: 100px auto;
+    text-align: center;
+    background-color:#F1A740;
+    overflow: hidden;
+    transition:background-color 1s ease-in-out;
+    -moz-transition:background-color 1s ease-in-out; /* Firefox 4 */
+    -webkit-transition:background-color 1s ease-in-out; /* Safari and Chrome */
+    -o-transition:background-color 1s ease-in-out; /* Opera */
+  }
+  .button2 a{
+    display: block;
+    /*margin-top: -30px ;*/
+    margin: 0 auto;
+    position: relative; top: -80px;
+    width: 200px;
+    height: 80px;  
+    font: lighter 2em/85px "Helvetica Neue", "Arial", "Helvetica", "sans-serif";
+    text-decoration: none;
+
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00b7ea), color-stop(100%,#009ec3)); *//* Chrome,Safari4+ */
+  }
+  .button2 a:first-child{
+    color: #ffffff;
+    background-color:#7C32DE;
+  }
+  .button2 a:nth-of-type(2){
+    color: #ffffff;
+    background-color:#000000;
+  }
+
+  .button2:hover{
+    /*margin-top: 180px; */
+    background-color: #F81B1B;
+  }
+
+  .test {
+    width: 200px;
+    height: 100px;
+    margin: 100px auto;
+    background-color: #F140D3;
+    text-align: center;
+    transition:background-color .3s ease-in-out;
+    -moz-transition:background-color .3s ease-in-out; /* Firefox 4 */
+    -webkit-transition:background-color .3s ease-in-out; /* Safari and Chrome */
+    -o-transition:background-color .3s ease-in-out; /* Opera */
+
+/*    display:table-cell;
+    vertical-align: middle;
+*/  }
+  .test span:first-child{
+    text-align: center;
+    font: lighter 2em "Helvetica Neue", "Arial", "Helvetica", "sans-serif";
+    vertical-align: middle;
+  }
+  .align{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  .test:hover{
+    background-color: #407BF1;
+  }
+
+
+  
+</style>
+</head>
+
+<body>
+  <div class="button1">
+    <a href="#">hello baby~</a> 
+    <a href="#">fuck you!</a>
+  </div>
+<div class="button2">
+    <a href="#" class=top>ass hole!</a> 
+    <a href="#" class=bottom>fuck you!</a>
+</div>
+<div class=test>
+    <span>test</span> 
+    <span class="align"></span>
+</div>
+
+<script type="text/javascript">
+  $('.button2').mouseover(function(){
+    //延迟100ms执行，让动画更加流畅
+    tId = setTimeout(function() {
+      $('.button2 a').animate({"top":"0px"} , "easeInOutCubic");
+    } , 100);
+  }).mouseleave(function(){
+    clearTimeout(tId);
+    // $(this).stop();   //stop方法清空动画队列
+    $('.button2 a').stop().animate({"top":"-80px"} , "easeInOutCubic");
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>链式调用</title>
+
+</head>
+<body>
+  <div id="text">
+  </div>
+
+  <script type="text/javascript">
+    // function hello(str){
+    //   var text = document.getElementById("text");
+    //   var queue = [];
+    //   var sleepCount = 0;
+
+    //   this.eat = function(kind){
+    //     if (sleepCount != 0){
+    //       var methodString = "eat(\"" + kind + "\")";
+    //       queue.push(methodString);
+    //     }
+    //     else{
+    //       text.innerHTML += "<p>Eat "+ kind + "</p>";
+    //     }
+    //     return this;
+    //   }
+
+    //   this.sleep = function(delay){
+    //     if (sleepCount != 0){
+    //       var methodString = "sleep(\"" + delay + "\")";
+    //       queue.push(methodString);
+    //     }
+    //     else {
+    //       sleepCount ++; 
+    //       setTimeout(function(){
+    //         sleepCount =0;
+    //         text.innerHTML += "<p>sleep "+delay + "</p>";
+    //         // alert(queue.length);
+    //         var execute;
+    //         while (queue.length != 0){
+    //           execute = queue.shift();
+    //           if (execute.match("sleep") == null)
+    //             eval(execute);
+    //           else
+    //             setTimeout(2000);
+    //         }
+    //       }, delay);
+    //     }
+    //     return this;
+    //   }
+
+    //   text.innerHTML += "<p>hello, "+ str + "</p>";
+    //   return this;
+    // }
+
+    function hello(str){
+      var queue = [];
+      this.eat = function(kind){
+        queue.push("Eat "+kind);  
+        return this;
+      }
+      this.sleep = function(delay){
+        queue.push("Sleep "+delay);  
+        return this;
+      }
+
+      queue.push("hello ,"+str);
+      return this;
+    }
+    var test = hello("guy").eat("breakfast").sleep(3000).eat("lunch").sleep(2000).eat("dinner");
+
+//SO 例子
+    var foo = function() {
+    var queue = [];
+    var timer ;
+    this.delay = function(per) {
+      timer = setTimeout(function(){
+        timer = 0;
+        var f;
+        while (f = queue.shift()){
+          //alert(f = queue.shift());
+          f();
+        } 
+      }, per);
+      return this;
+    };
+    this.addFunction = function(f) {
+      //alert(timer);
+      if (timer) queue.push(f);
+      else f();
+      return this;
+    };
+    this.start = function() {
+       this.addFunction(function(){alert('start')});
+       return this;
+    };
+};
+
+//var bar = new foo().delay(3000).start()
+ //   .addFunction(function(){alert("another chained one")});
+
+  </script>
+</body>
+
+

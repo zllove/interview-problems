@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>table</title>
+  <style type="text/css">
+    body{
+      margin: 0;
+    }
+    #main_div{
+      width: 100%;
+      height: 1000px;
+      background-color: #F5EBA0;
+    }
+
+    #top{
+      width: 100%;
+      height: 150px;
+    }
+    #top div{
+      width: 100%;
+      height: 150px;
+      background-color: #78EE7C;
+      position: fixed;
+    }
+
+    #scroll_div{
+      position: fixed;
+      left: 30px;
+      top: 150px;
+      width: 270px;
+      height: 300px;
+      background-color: #D92C2C;
+      overflow: auto;
+    }
+
+    #scroll_div li{
+      list-style: none;
+      font: 30px/40px "KaiTi","FangSong","黑体","Microsoft YaHei","宋体",sans-serif;
+    }
+
+    #text{
+      position: absolute; 
+      left: 300px;
+      right: 100px;
+      top: 100px;
+      height: 800px;
+      background-color: #9E25E4;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="main_div">
+    <div id="top">
+      <!-- fixed_div -->
+      <div></div>
+    </div>
+    <div id="scroll_div">
+      <ul>
+        <li>1.xxxxx</li>
+        <li>2.xxxxx</li>
+        <li>3.xxxxx</li>
+        <li>4.xxxxx</li>
+        <li>5.xxxxx</li>
+        <li>6.xxxxx</li>
+        <li>7.xxxxx</li>
+        <li>8.xxxxx</li>
+        <li>9.xxxxx</li>
+        <li>10.xxxx</li>
+      </ul>
+    </div>
+    <div id="text">
+      <p>hello world</p> 
+    </div>
+  </div>
+  
+  <script type="text/javascript">
+    // var top_pic = document.getElementById("top");
+    // alert(top_pic.offsetLeft);
+  </script>
+</body>
+
+

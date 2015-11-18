@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="jquery.min.js"></script>
+
+  <style type="text/css">
+  label{
+    float: left;
+  }
+	#demo{
+	  margin-top: 0px;
+	}
+  #input{
+    display: inline-block;
+  }
+  </style>
+</head>
+<body>
+  <label for="demo">test_input</label>
+    <div id="input">
+      <input type="text" value="a" id="demo">
+      <p>test</p>
+      <p>test2</p>
+    </div>
+  <br>
+  <button id="confirm" style="margin-top: 100px;">confirm</button>
+
+  <script type="text/javascript">
+  	$('#demo').focus(function(){
+  		var con = 0;
+      $('#demo').keypress(function(event){
+        if (con == 0){
+          $('#demo').css({"background-color" : "#DAEED2"});
+          con = 1;
+        }
+        else{
+          $('#demo').css({"background-color" : "#2CB5D7"});
+        con = 0;          
+        }
+
+        var press_code = event.which;
+        // var a = String.hasOwnProperty();
+        //var a = String.constructor
+        var a = String.fromCharCode(press_code);  //根据输入的字符玛，转换成字符
+        var input = $('#demo').val() + a;
+        console.log(input);
+
+  		});
+  		// setInterval(function(){
+  		// 	$('#article').append('<p>123</p>');
+  		// }, 700);
+  	});
+  	$('#demo').blur(function(){
+  		alert("hihihihi");
+  	});
+
+    // 阿里笔试题
+    // name = 'World!';
+    // function test() {
+    //     if (typeof name === 'undefined') {
+    //         var name = 'Jack';
+    //         console.log('Goodbye ' + name);
+    //     } else {
+    //         console.log('Hello ' + name);
+    //     }
+    // };
+    // var hello = new test();
+
+    $('#confirm').click(function(event){
+      var _confirm = confirm("跳转页面？");
+      if (_confirm == true){
+        // event.returnValue = true;  
+        window.location.href="../blog/blog.html"; 
+      }
+      else{
+        return false;
+        //event.returnValue = false;  
+      }
+    });
+
+//2个闭包测试
+    function aa(){
+      var i = 0;
+      return function bb(){
+        alert(++i);
+        //return ++i;
+      };
+    }
+    //aa()();
+    var fuck = new aa();
+  //  fuck();
+  //  fuck();
+
+    var name = "The Window"; 
+　　var object = { 
+　　　　name : "My Object", 
+        kind : "closure" ,
+　　　　getNameFunc : function(){ 
+　　　　　　return function(){ 
+　　　　　　　　return this.name; 
+　　　　　}; 
+　　　　} 
+}; 
+alert(object.getNameFunc()()); //The Window
+alert(object.getNameFunc().call(object));   //My Object
+alert(object.getNameFunc().bind(object)() );  //My Object
+
+//深浅拷贝
+function deep_clone(obj){
+  var object3 = new Object();
+  for (var property in obj){
+    if (typeof obj[property] === 'object')
+      object3[property] = deep_clone(obj[property]);
+    else
+      object3[property] = obj[property];
+  }
+  return object3;
+}
+
+function shallow_clone(obj){ 
+  var object2 = obj;
+  return object2;
+}
+
+var obj_deep = deep_clone(object);
+var obj_shallow = shallow_clone(object);
+object.kind = "fuckyou!!!!!";
+
+// for (var property in obj_deep){
+//   console.log(property + " " + obj_deep[property]);
+// }
+for (var property in object){
+  console.log(property + " " + object[property]);
+}
+for (var property in obj_shallow){
+  console.log(property + " " + obj_shallow[property]);
+}
+
+
+var test=document.getElementsByTagName('html')[0].innerHTML;  
+        alert(test); 
+
+  	
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BFC</title>
+
+<style type="text/css">
+#main_div{
+   background-color: #F8FB4B;	
+   height: 1000px;
+}	
+.row1{
+   width: 200px;
+   height: 50px;
+   float: left;
+   background-color: #1290FE;
+   text-align: center;
+}
+.row2{
+   background-color: #719345;
+   overflow: hidden;
+   text-align: center;
+   height: 150px;
+}
+.row3{
+	width: 200px;
+	float: right;
+	height: 80px;
+	background-color: #562813;
+   text-align: center;
+}
+</style>
+
+  </head>
+<body>
+	<div id="main_div">
+	  <div class="row1">
+	  	<p>1</p>	
+	  </div>
+	  <div class="row3">
+	  	<p>3</p>	
+	  </div>
+	  <div class="row2">
+	  	<div><p>2</p></div>
+	  </div>
+	</div>
+</body>

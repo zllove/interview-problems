@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>预加载</title>
+	
+	<style type="text/css">
+		.img-container{
+			width: 20%;
+			height: 0;
+			padding-bottom: 20%;
+			overflow: hidden;
+		}
+		img{
+			width: 100%;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="img-container">
+		<img src="emptyAvatar.jpg" data-src="http://msqdata.oss-cn-hangzhou.aliyuncs.com/557eadabc91753475c1e71c61434365355.jpg">
+	</div>
+	<!-- <img src="http://msqdata.oss-cn-hangzhou.aliyuncs.com/557dacb5c91753475c1e71b21434299573.jpg"> -->
+
+<script type="text/javascript">
+	var image = new Image();
+	var src = document.querySelector('img').getAttribute('data-src');
+	image.src = src;
+	image.onload = function(){
+		document.querySelector('img').setAttribute('src', src);
+		console.log('load complete!')
+	};
+</script>
+
+</body>
+</html>

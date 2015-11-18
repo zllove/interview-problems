@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+
+	<style>
+		article {
+			display: none;
+		}
+		article.active {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<button id="button1"><a href="#sb"> 傻逼 </a></button>
+	<button id="button2"><a href="#db"> 逗逼 </a></button>
+	<legend></legend>
+	<article id = "art1">
+		<h1>
+			傻逼
+		</h1>
+		<p>
+			居然在百度百科找不到解释！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+		</p>
+	</article>
+	<article id = "art2">
+		<h1>
+			逗逼
+		</h1>
+		<p>
+			网络词汇，生活中也常用为“逗b”来委婉替代，多为贬义。
+		</p>
+		<p>
+			“逗”在这里做动词用，可以理解为搞笑，制造幽默气氛的一种行为动作；这里可以理解为一个不正常的人。联合意思为：一个人很有趣也很傻，较容易搞笑。
+		</p>
+		<p>
+			常用于调侃“为大家带来快乐的“脑残”；也有“你真是个逗逼”一般指“你这人真逗”之意，一般在比较熟的朋友之间互相形容。
+		</p>
+	</article>
+
+	<script type="text/javascript">
+	(function () {
+		var tag_map = {
+			sb: 'art1',
+			db: 'art2'
+		};
+		function changeTag(hash) {
+			if (tag_map[hash]) {
+				var elems = document.querySelectorAll('article');
+				for (var i in elems) {
+					elems[i].className = '';
+				}
+				document.querySelector('#' + tag_map[hash]).className = 'active';
+			} else {
+				var elems = document.querySelectorAll('article');
+				for (var i in elems) {
+					elems[i].className = '';
+				}
+				document.querySelector('#art1').className = 'active';
+			}
+		}
+		changeTag(location.hash.replace('#', ''));
+
+		window.onhashchange = function () {
+			changeTag(location.hash.replace('#', ''));
+		}
+
+	})();
+	</script>
+</body>
+</html>

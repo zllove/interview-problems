@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>闭包用处 + 三列自适应</title>
+    <link rel="stylesheet/less" type="text/css" href="css/index.less">
+    <style type="text/css">
+      #left{
+        float: left;
+        height: 150px;
+        width: calc(50% - 150px);
+        background-color: #768312;
+      }
+      #center{
+        width: 300px;
+        height: 200px;
+        margin: 0 auto;
+        background-color: #EEEEEE;
+      }
+      #right{
+        float: right;
+        height: 150px;
+        width: calc(50% - 150px);
+        background-color: #768312;
+      }
+
+      #second{
+        margin-top: 100px;
+      }
+      #left2{
+        float: left;
+        width: 200px;
+        height: 100px;
+        background-color: #dddddd;
+      }
+      #right2{
+        float: right;
+        width: 200px;
+        height: 100px;
+        background-color: #dddddd;
+      }
+      #center2{
+        /*overflow: hidden;*/
+        height: 200px;
+        margin: 0 200px;
+        background-color: #456732;
+      }
+
+      #third{
+        margin-top: 100px;
+      }
+      #right3{
+        margin-left: 100px;
+        height: 200px;
+        background-color: #345621;
+      }
+      #left3{
+        width: 100px;
+        height: 100px;
+        float: left;
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="left"></div>
+      <div id="right"></div>
+      <div id="center"></div>
+    </div>
+    <div id='second'>
+      <div id="left2"></div>
+      <div id="right2"></div>
+      <div id="center2"></div>
+    </div>
+    <div id="third">
+      <div id="left3"></div> 
+      <div id="right3"></div> 
+    </div>
+    <script type="text/javascript">
+      //闭包私有变量
+      function Person(){
+        var name = 'tao';
+        this.getName = function(){
+          return name;
+        }
+        this.setName = function(newName){
+          name = newName;
+        }
+      }
+
+      var person1 = new Person();
+      var person2 = new Person();
+
+      person1.setName('Taotao');
+      // console.log(person1.getName());
+      // console.log(person2.getName());
+
+      /********************/
+      //闭包静态私有变量
+      (function(){
+        var staticPrivate = 0;
+        Person2 = function(){
+          this.getPrivate = function(){
+            return staticPrivate;
+          }          
+          this.addPrivate = function(){
+            staticPrivate ++;
+          }
+        }
+      })();
+
+      var person1 = new Person2();
+      var person2 = new Person2();
+      console.log(person1.getPrivate());
+      person1.addPrivate();
+      console.log(person2.getPrivate());
+
+
+    </script>
+  </body>
+</html>

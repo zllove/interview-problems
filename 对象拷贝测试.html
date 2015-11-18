@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+
+  <script type="text/javascript">
+  	function Test(){
+  		this.name = 'hello';
+  	}
+
+  	function changeName(object){
+  		var object2 = object;
+  		object2.name = 'fuck ass';
+  	}
+
+  	var test1 = new Test();
+  	var test2 = test1;
+  	console.log(test2.name);
+  	changeName(test2);
+  	console.log(test2.name);	//输出fuck ass
+  </script>
+</body>
+</html>

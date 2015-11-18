@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+  	<meta charset="utf-8">
+  	<title>继承</title>
+  </head>
+  <body>
+
+  <script type="text/javascript">
+  //method 1
+      function parent(){
+          this.debug = 'hahaha';
+          this.showName = function(){
+            console.log('parent show name: ' + this.name);
+          }
+      }
+      parent.prototype.count = 0;
+
+      function child1(username){
+          this.name = username;
+          this.method = parent;
+          this.method();
+          delete this.method;
+      }
+
+      function child2(username){
+          this.name = username;
+          parent.call(this);  
+      }
+
+      function child3(username){
+          this.name = username;
+      }
+      child3.prototype = new parent();
+
+      var test1 = new child3('test1');
+      var test2 = new child3('test2');
+      test1.count ++;
+      console.log(test1.count);
+      console.log(test2.count + ' count');
+      // test.showName(); 
+      // console.log('fuck ' + test.debug);
+
+
+
+  </script>
+  </body>

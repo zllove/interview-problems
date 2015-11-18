@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title>自定义事件</title>
+</head>
+<body>
+  <button id="event_test">test</button>
+
+  <script type="text/javascript">
+    var button = document.getElementById('event_test');
+      //添加自定义事件监听
+      button.addEventListener('myNewEvent', function(){
+      alert('my event!!!');
+    });
+
+    //创建自定义事件
+    var evt = document.createEvent('Events'); 
+    evt.initEvent('myNewEvent', true, true);
+    setTimeout(function(){
+      console.log('hi')
+      button.dispatchEvent(evt);
+    }, 2000);
+  </script>
+</body>
+</html>
