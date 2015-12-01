@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>函数拦截器</title>
+</head>
+<body>
+  <script type="text/javascript">
+  /*
+  	function one(value){
+  		return value * value;
+  	}
+
+  	function two(value){
+  		console.log(arguments)
+  		return one.apply(this, arguments);
+  	}
+
+  	function three(value){
+  		console.log(arguments)
+  		return two(10);
+  	}
+
+  	//console.log(two(5))
+  	//console.log(three(5))
+  */
+
+  	Function.prototype.createInterceptor = function createInterceptor(fn){
+  		var scope = {};
+  		var that = this;		//this指向intercept函数，arguments指向fn函数
+  		return function(){		//匿名函数中this指向window对象，arguments指向cube调用时参数
+  			//console.log(arguments)
+  			if (fn.apply(scope, arguments)){
+  				return that.apply(scope, arguments);
+  			}
+  			else{
+  				return null;
+  			}
+  		}
+  	}
+
+  	var intercept = function cube(x){
+  		var result = Math.pow(x, 3);
+  		console.log('output: ' + result);
+  		return Math.pow(x, 3);
+  	}
+
+  	//拦截掉不是数字的类型
+  	var cube = intercept.createInterceptor(function(x){
+  		return typeof x === 'number';
+  	});
+
+  	cube(5);
+
+  </script>
+</body>
+</html>
